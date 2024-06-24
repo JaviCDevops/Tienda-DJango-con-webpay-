@@ -1,0 +1,8 @@
+from django.shortcuts import render
+from home.models import *
+
+
+def todo(request):
+	#select * from productos where estado_id=1 order by id desc limit 8
+	datos=Producto.objects.filter(estado_id=1).order_by('-id').all()
+	return render(request, 'todo/todo.html', {'datos':datos})
